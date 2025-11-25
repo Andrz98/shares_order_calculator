@@ -1,0 +1,60 @@
+[tool.black]
+line-length = 88
+target-version = ['py311', 'py312']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directorios
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+# Configuración de linting
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort (organización de imports)
+    "N",   # pep8-naming
+    "UP",  # pyupgrade (moderniza sintaxis)
+    "B",   # flake8-bugbear (bugs comunes)
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+]
+
+ignore = [
+    "E203", # whitespace before ':' (conflicto con Black)
+    "E501", # line too long (Black lo maneja automáticamente)
+]
+
+# Configuración de isort (organización de imports)
+[tool.ruff.lint.isort]
+known-first-party = ["tu_proyecto"] # Cambia por el nombre de tu proyecto
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
