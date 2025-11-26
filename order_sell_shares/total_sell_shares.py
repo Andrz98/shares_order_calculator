@@ -1,5 +1,4 @@
 def total_sell_shares_etf(order_sell_share_list: list[float]) -> float:
-
     total_sell_shares = 0.0
 
     for sell_calculator in order_sell_share_list:
